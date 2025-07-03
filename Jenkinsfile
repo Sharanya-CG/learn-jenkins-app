@@ -16,8 +16,9 @@ pipeline {
                     npm --version
                     npm ci
                     npm run build
+                    rmdir -f test-results
                     ls -la
-                    rm -f test-results
+                    
                 '''
             }
         }
