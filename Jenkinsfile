@@ -14,10 +14,10 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
-                    npm ci
+                    // npm ci
                     npm run build
                     rm -f test_results/junit.xml
-                    rmdir -f test-results
+                    rmdir test-results
                     ls -la
                     
                 '''
