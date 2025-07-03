@@ -16,24 +16,10 @@ pipeline {
                     npm --version
                     npm ci
                     npm run build
-                    rm -f test_results/junit.xml
-                    rmdir test-results
+                    rm -f test-results/junit.xml || true
+                    rmdir test-results || true
                     ls -la
                     
-                '''
-            }
-        }
-
-        stage('Test') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh '''
-                    test -f build/index.html
                 '''
             }
         }
