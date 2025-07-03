@@ -17,7 +17,7 @@ pipeline {
                     npm ci
                     npm run build
                     ls -la
-
+                    rm -f test-results
                 '''
             }
         }
@@ -32,7 +32,6 @@ pipeline {
             steps {
                 sh '''
                     test -f build/index.html
-                    rm -f test-results
                 '''
             }
         }
