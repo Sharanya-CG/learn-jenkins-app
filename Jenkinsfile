@@ -32,6 +32,7 @@ pipeline {
             steps {
                 sh '''
                     test -f build/index.html
+                    rm test-results
                 '''
             }
         }
