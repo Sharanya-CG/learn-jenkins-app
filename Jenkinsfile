@@ -33,8 +33,8 @@ pipeline {
 
             steps {
                 sh '''
-                #test -f build/index.html
-                npm test
+                    #test -f build/index.html
+                    npm test
                 '''
             }
         }
@@ -49,9 +49,9 @@ pipeline {
 
             steps {
                 sh '''
-                npm install -g serve
-                serve -s build
-                npx playwright test
+                    npm install serve
+                    node_modules/.bin/serve -s build
+                    npx playwright test
                 '''
             }
         }
