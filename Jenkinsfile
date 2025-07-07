@@ -69,6 +69,7 @@ pipeline {
                 }
             }
         }
+
         stage('Deploy') {
             agent {
                 docker {
@@ -79,7 +80,7 @@ pipeline {
             steps {
                 sh '''
                     npm install -g netlify-cli -g
-                    netlify --version
+                    node_modules/.bin/netlify --version
                 '''
             }
         }
