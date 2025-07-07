@@ -71,17 +71,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
             steps {
-                sh '''
-                    npm install -g netlify-cli --no-save
-                    node_modules/.bin/netlify --version
-                '''
+                script {
+                    docker.image('node:18-alpine').inside {
+                        sh 'npm install netlify-cli --no-save'
+                        sh 'npx netlify deploy --dir=build --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID'
+                    }
+                }
             }
         }
     }
